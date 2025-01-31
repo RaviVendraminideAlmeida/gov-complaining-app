@@ -13,9 +13,5 @@ services:
          size: 134217728 
     environment:
       POSTGRES_PASSWORD: postdba 
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
+    ports: 
+      - "5433:5432"

@@ -1,8 +1,10 @@
 import uuid
 
+from pydantic import EmailStr
 from sqlmodel import Field, Relationship, SQLModel
 
 class UserBase(SQLModel):
+    email : EmailStr = Field(unique=True, index=True, max_length=255)
     is_active : bool = True
     is_superuser : bool = False
     full_name : str | None = Field(default=None, max_length=255)
@@ -22,5 +24,5 @@ class Complaint(ComplaintBase, table=True):
     author_id : uuid.UUID = Field(
         foreign_key="user.id", nullable=False, ondelete="CASCADE"
     )
-    author : User | None = Relationship(back_populates="")
+    author : User | None = Relationship(back_populates="complaints")
     

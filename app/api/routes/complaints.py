@@ -4,5 +4,5 @@ router = APIRouter(prefix="/complaints", tags=["complaints"])
 
 
 @router.get("/")
-def get_users():
+async def get_complaints():
     return [{"text": "Lorem Ipsum Dolor Sit Amet"}]
